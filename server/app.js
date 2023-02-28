@@ -41,4 +41,7 @@ app.use(
 const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
+const snippetRoutes = require("./routes/snippet.routes");
+app.use("/api", snippetRoutes);
+
 module.exports = app;
