@@ -29,7 +29,8 @@ app.use(
       maxAge: 1000,
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/ReactTodos",
+      mongoUrl:
+        process.env.MONGODB_URI || "mongodb://localhost:27017/snippet-proj",
       // Time to Live for sessions in DB. After that time it will delete it!
       ttl: 24 * 60 * 60, // your session will be cleared after these seconds
     }),
