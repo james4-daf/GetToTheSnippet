@@ -43,7 +43,7 @@ router.post("/create", (req, res) => {
 // will handle all GET requests to http:localhost:5005/api/snippets/:todoId
 //PS: Don't type :todoId , it's something dynamic,
 router.get("/snippets/:snippetId", (req, res) => {
-  SnippetModel.findById(req.params.todoId)
+  SnippetModel.findById(req.params.snippetId)
     .then((response) => {
       res.status(200).json(response);
     })

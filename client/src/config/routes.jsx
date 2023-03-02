@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import SnippetDetail from "../components/SnippetDetail/SnippetDetail";
 import SnippetList from "../components/SnippetList/SnippetList";
 import Login from "../pages/LogIn";
 import ProtectedPage from "../pages/ProtectedPage";
@@ -11,6 +12,15 @@ const routes = (props) => {
     {
       path: PATHS.HOMEPAGE,
       element: <SnippetList {...props} />,
+    },
+    {
+      path: PATHS.SNIPPET_DETAIL,
+      element: (
+        <>
+          <SnippetList {...props} />
+          <SnippetDetail {...props} />
+        </>
+      ),
     },
     {
       path: PATHS.SIGNUPPAGE,

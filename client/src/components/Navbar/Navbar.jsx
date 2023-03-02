@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
+import * as PATHS from "../../utils/paths";
+import "./Navbar.css";
 
 const Navbar = (props) => {
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with RootLauncher
+        {CONSTS.CAPITALIZED_APP}
       </Link>
 
       <div className="nav__authLinks">
