@@ -22,12 +22,12 @@ router.get("/snippets", (req, res) => {
 // will handle all POST requests to http:localhost:5005/api/create
 
 router.post("/create", (req, res) => {
-  const { name, description, completed } = req.body;
+  const { title, code, tags } = req.body;
   console.log(req.body);
   SnippetModel.create({
-    name: name,
-    description: description,
-    completed: completed,
+    title: title,
+    code: code,
+    tags: tags,
   })
     .then((response) => {
       res.status(200).json(response);

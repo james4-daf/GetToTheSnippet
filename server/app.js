@@ -15,7 +15,6 @@ const app = express();
 require("./config")(app);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require("./error-handling")(app);
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -43,6 +42,9 @@ const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
 const snippetRoutes = require("./routes/snippet.routes");
+console.log("somethingjskdnsjsc");
 app.use("/api", snippetRoutes);
+
+require("./error-handling")(app);
 
 module.exports = app;

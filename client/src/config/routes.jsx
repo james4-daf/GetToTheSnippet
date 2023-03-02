@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import SnippetList from "../components/SnippetList/SnippetList";
 import Login from "../pages/LogIn";
-import Signup from "../pages/Signup";
 import ProtectedPage from "../pages/ProtectedPage";
+import Signup from "../pages/Signup";
 import * as PATHS from "../utils/paths";
 
 const routes = (props) => {
@@ -10,7 +10,7 @@ const routes = (props) => {
   return [
     {
       path: PATHS.HOMEPAGE,
-      element: <HomePage {...props} />,
+      element: <SnippetList {...props} />,
     },
     {
       path: PATHS.SIGNUPPAGE,
