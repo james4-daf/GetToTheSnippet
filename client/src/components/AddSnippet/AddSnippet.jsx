@@ -1,11 +1,11 @@
+import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React from "react";
-import AddIcon from "@mui/icons-material/Add";
 
 function AddSnippet(props) {
-  const { onHandleAdd } = props;
-  return (
+  const { onHandleAdd, showForm, onSetShowForm } = props;
+  return showForm ? (
     <form onSubmit={onHandleAdd}>
       <TextField
         // onChange={(event) => {
@@ -37,6 +37,17 @@ function AddSnippet(props) {
         Add
       </Button>
     </form>
+  ) : (
+    <Button
+      type="button"
+      variant="outlined"
+      startIcon={<AddIcon />}
+      onClick={() => {
+        onSetShowForm(true);
+      }}
+    >
+      showForm
+    </Button>
   );
 }
 

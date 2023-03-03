@@ -4,10 +4,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function SnippetDetail() {
+function SnippetDetail(props) {
   const { id } = useParams();
+  let navigate = useNavigate();
   const [showSnippet, setShowSnippet] = useState(null);
 
   useEffect(() => {
@@ -22,6 +23,14 @@ function SnippetDetail() {
 
     // console.log(countries.getName(countryDetail.alpha2Code, "en"));
   }, [id]);
+
+  async function deleteSnippet(e) {
+    const { snippetData, onSetSnippetData } = props;
+    await axios.delete(`http://localhost:5005/api/snippets/${id}`);
+    let filteredSnippets = snippetData.filter((t) => t._id !== id);
+    onSetSnippetData(filteredSnippets);
+    navigate(`/`);
+  }
 
   if (showSnippet) {
     return (
@@ -39,6 +48,7 @@ function SnippetDetail() {
                 {showSnippet.tags}
               </Typography>
             </CardContent>
+            <button onClick={deleteSnippet}>Delete</button>
           </Card>
         </Grid>
       </>

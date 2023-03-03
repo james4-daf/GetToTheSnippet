@@ -1,5 +1,3 @@
-import AddIcon from "@mui/icons-material/Add";
-import { Button } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
@@ -12,7 +10,7 @@ import LoadingComponent from "../Loading";
 import SnippetDetail from "../SnippetDetail/SnippetDetail";
 
 function SnippetList(props) {
-  const { snippetData } = props;
+  const { snippetData, showForm, onSetShowForm, onSetSnippetData } = props;
 
   if (!snippetData) {
     return <LoadingComponent />;
@@ -21,10 +19,11 @@ function SnippetList(props) {
   return (
     <>
       <Grid item xs={3}>
-        <Button variant="outlined" startIcon={<AddIcon />}>
-          Add
-        </Button>
-        <AddSnippet onHandleAdd={props.onHandleAdd} />
+        <AddSnippet
+          onHandleAdd={props.onHandleAdd}
+          onSetShowForm={onSetShowForm}
+          showForm={showForm}
+        />
 
         {snippetData.map((snippet) => {
           return (
@@ -44,7 +43,15 @@ function SnippetList(props) {
         })}
       </Grid>
       <Routes>
-        <Route path="/snippets/:_id" element={<SnippetDetail />} />
+        <Route
+          path="/snippets/:_id"
+          element={
+            <SnippetDetail
+              snippetData={snippetData}
+              onSetSnippetData={onSetSnippetData}
+            />
+          }
+        />
       </Routes>
     </>
   );

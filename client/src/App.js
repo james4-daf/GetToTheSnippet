@@ -13,6 +13,7 @@ export default function App() {
   const [snippetData, setSnippetData] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const accessToken = USER_HELPERS.getUserToken();
@@ -52,6 +53,7 @@ export default function App() {
   async function handleAdd(e) {
     e.preventDefault();
     console.log("Submitted add");
+
     const { title, code, tags } = e.target;
     let snippet = {
       title: title.value,
@@ -61,6 +63,8 @@ export default function App() {
 
     await axios.post("http://localhost:5005/api/create", snippet);
     toast("Snippet added");
+    setShowForm(false);
+    getSnippetData();
   }
 
   async function getSnippetData() {
@@ -86,6 +90,9 @@ export default function App() {
           authenticate,
           handleLogout,
           snippetData,
+          showForm,
+          onSetSnippetData: setSnippetData,
+          onSetShowForm: setShowForm,
         }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
