@@ -17,8 +17,8 @@ function SnippetList(props) {
   }
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={4}>
+    <>
+      <Grid item xs={3}>
         <Button variant="outlined" startIcon={<AddIcon />}>
           Add
         </Button>
@@ -42,7 +42,7 @@ function SnippetList(props) {
       <Routes>
         <Route path="/snippets/:_id" element={<SnippetDetail />} />
       </Routes>
-    </Grid>
+    </>
   );
 }
 

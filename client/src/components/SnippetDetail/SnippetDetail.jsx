@@ -25,8 +25,8 @@ function SnippetDetail() {
 
   if (showSnippet) {
     return (
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
+      <>
+        <Grid item xs={9}>
           <Card sx={{ minWidth: 75, maxWidth: 345 }}>
             <CardContent>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -41,7 +41,7 @@ function SnippetDetail() {
             </CardContent>
           </Card>
         </Grid>
-      </Grid>
+      </>
     );
   }
 }

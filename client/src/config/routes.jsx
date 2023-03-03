@@ -17,7 +17,7 @@ const routes = (props) => {
     {
       path: PATHS.SNIPPET_DETAIL,
       element: (
-        <Grid container>
+        <Grid container spacing={2}>
           <SnippetList {...props} />
 
           <SnippetDetail {...props} />
