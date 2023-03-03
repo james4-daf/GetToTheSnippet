@@ -1,3 +1,6 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
@@ -48,7 +51,14 @@ function SnippetDetail(props) {
                 {showSnippet.tags}
               </Typography>
             </CardContent>
-            <button onClick={deleteSnippet}>Delete</button>
+
+            <Button type="button" variant="outlined" startIcon={<EditIcon />} />
+            <Button
+              type="button"
+              variant="outlined"
+              startIcon={<DeleteIcon />}
+              onClick={deleteSnippet}
+            />
           </Card>
         </Grid>
       </>
