@@ -1,3 +1,4 @@
+import Grid from "@mui/material/Grid";
 import { Navigate } from "react-router-dom";
 import SnippetDetail from "../components/SnippetDetail/SnippetDetail";
 import SnippetList from "../components/SnippetList/SnippetList";
@@ -16,10 +17,11 @@ const routes = (props) => {
     {
       path: PATHS.SNIPPET_DETAIL,
       element: (
-        <>
+        <Grid container>
           <SnippetList {...props} />
+
           <SnippetDetail {...props} />
-        </>
+        </Grid>
       ),
     },
     {
