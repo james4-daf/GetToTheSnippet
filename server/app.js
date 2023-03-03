@@ -42,7 +42,7 @@ const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
 const snippetRoutes = require("./routes/snippet.routes");
-console.log("somethingjskdnsjsc");
+//console.log("somethingjskdnsjsc");
 app.use("/api", snippetRoutes);
 
 require("./error-handling")(app);

@@ -1,5 +1,6 @@
 import Grid from "@mui/material/Grid";
 import { Navigate } from "react-router-dom";
+import AddSnippet from "../components/AddSnippet/AddSnippet";
 import SnippetDetail from "../components/SnippetDetail/SnippetDetail";
 import SnippetList from "../components/SnippetList/SnippetList";
 import Login from "../pages/LogIn";

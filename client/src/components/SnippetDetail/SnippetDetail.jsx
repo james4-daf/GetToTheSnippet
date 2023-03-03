@@ -15,7 +15,7 @@ function SnippetDetail() {
       let response = await axios.get(
         `http://localhost:5005/api/snippets/${id}`
       );
-      console.log(response.data);
+      // console.log(response.data);
       setShowSnippet(response.data);
     }
     fetchSnippets();
@@ -30,10 +30,10 @@ function SnippetDetail() {
           <Card sx={{ minWidth: 75, maxWidth: 345 }}>
             <CardContent>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                <p>{showSnippet.title}</p>
+                <span>{showSnippet.title}</span>
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                <p>{showSnippet.code}</p>
+                <span>{showSnippet.code}</span>
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 {showSnippet.tags}

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import routes from "./config/routes";
@@ -47,6 +49,19 @@ export default function App() {
   function authenticate(user) {
     setUser(user);
   }
+  async function handleAdd(e) {
+    e.preventDefault();
+    console.log("Submitted add");
+    const { title, code, tags } = e.target;
+    let snippet = {
+      title: title.value,
+      code: code.value,
+      tags: tags.value,
+    };
+
+    await axios.post("http://localhost:5005/api/create", snippet);
+    toast("Snippet added");
+  }
 
   async function getSnippetData() {
     let response = await axios.get("http://localhost:5005/api/snippets");
@@ -62,13 +77,18 @@ export default function App() {
   }
   return (
     <div className="App">
+      <ToastContainer />
       <Navbar handleLogout={handleLogout} user={user} />
       <Routes>
-        {routes({ user, authenticate, handleLogout, snippetData }).map(
-          (route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          )
-        )}
+        {routes({
+          onHandleAdd: handleAdd,
+          user,
+          authenticate,
+          handleLogout,
+          snippetData,
+        }).map((route) => (
+          <Route key={route.path} path={route.path} element={route.element} />
+        ))}
       </Routes>
     </div>
   );
