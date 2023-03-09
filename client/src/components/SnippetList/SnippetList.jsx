@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import AddSnippet from "../AddSnippet/AddSnippet";
 
 import LoadingComponent from "../Loading";
@@ -11,7 +11,8 @@ import SnippetDetail from "../SnippetDetail/SnippetDetail";
 
 function SnippetList(props) {
   const { snippetData, showForm, onSetShowForm, onSetSnippetData } = props;
-
+  const location = useLocation();
+  const pathname = location.pathname;
   if (!snippetData) {
     return <LoadingComponent />;
   }
@@ -27,8 +28,18 @@ function SnippetList(props) {
 
         {snippetData.map((snippet) => {
           return (
-            <div key={snippet._id} className="content">
-              <Card sx={{ minWidth: 75, maxWidth: 345 }}>
+            <div key={snippet._id}>
+              <Card
+                className="content"
+                sx={{
+                  minWidth: 75,
+                  maxWidth: 345,
+                  bgcolor:
+                    pathname === `/snippets/${snippet._id}`
+                      ? "#d1ff33"
+                      : "noColor",
+                }}
+              >
                 <CardContent>
                   <Typography sx={{ fontSize: 25 }} gutterBottom>
                     <Link to={`/snippets/${snippet._id}`}>{snippet.title}</Link>
