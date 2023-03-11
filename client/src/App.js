@@ -93,6 +93,7 @@ export default function App() {
           showForm,
           onSetSnippetData: setSnippetData,
           onSetShowForm: setShowForm,
+          getSnippetData,
         }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}

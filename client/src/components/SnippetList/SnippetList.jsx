@@ -35,7 +35,8 @@ function SnippetList(props) {
                   minWidth: 75,
                   maxWidth: 345,
                   bgcolor:
-                    pathname === `/snippets/${snippet._id}`
+                    pathname === `/snippets/${snippet._id}` ||
+                    pathname === `/snippets/${snippet._id}/edit`
                       ? "#d1ff33"
                       : "noColor",
                 }}

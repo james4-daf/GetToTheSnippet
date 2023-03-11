@@ -72,10 +72,10 @@ router.delete("/snippets/:id", (req, res) => {
 // will handle all PATCH requests to http:localhost:5005/api/snippets/:id
 router.patch("/snippets/:id", (req, res) => {
   let id = req.params.id;
-  const { name, description, completed } = req.body;
+  const { title, code, tags } = req.body;
   SnippetModel.findByIdAndUpdate(
     id,
-    { $set: { name: name, description: description, completed: completed } },
+    { $set: { title: title, code: code, tags: tags } },
     { new: true }
   )
     .then((response) => {

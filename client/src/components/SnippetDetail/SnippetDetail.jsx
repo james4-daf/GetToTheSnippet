@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function SnippetDetail(props) {
   const { id } = useParams();
@@ -52,7 +52,13 @@ function SnippetDetail(props) {
               </Typography>
             </CardContent>
 
-            <Button type="button" variant="outlined" startIcon={<EditIcon />} />
+            <Link to={`/snippets/${showSnippet._id}/edit`}>
+              <Button
+                type="button"
+                variant="outlined"
+                startIcon={<EditIcon />}
+              />
+            </Link>
             <Button
               type="button"
               variant="outlined"

@@ -23,6 +23,7 @@ function AddSnippet(props) {
         label="code"
         variant="outlined"
         type="string"
+        multiline
       />
       <TextField
         // onChange={(event) => {
