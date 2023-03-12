@@ -10,7 +10,13 @@ import LoadingComponent from "../Loading";
 import SnippetDetail from "../SnippetDetail/SnippetDetail";
 
 function SnippetList(props) {
-  const { snippetData, showForm, onSetShowForm, onSetSnippetData } = props;
+  const {
+    snippetData,
+    showForm,
+    onSetShowForm,
+    onSetSnippetData,
+    filteredSnippets,
+  } = props;
   const location = useLocation();
   const pathname = location.pathname;
   if (!snippetData) {
@@ -26,7 +32,7 @@ function SnippetList(props) {
           showForm={showForm}
         />
 
-        {snippetData.map((snippet) => {
+        {filteredSnippets.map((snippet) => {
           return (
             <div key={snippet._id}>
               <Card

@@ -14,6 +14,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [filteredSnippets, setFilteredSnippets] = useState(null);
 
   useEffect(() => {
     const accessToken = USER_HELPERS.getUserToken();
@@ -70,11 +71,18 @@ export default function App() {
   async function getSnippetData() {
     let response = await axios.get("http://localhost:5005/api/snippets");
     setSnippetData(response.data);
+    setFilteredSnippets(response.data);
   }
 
   useEffect(() => {
     getSnippetData();
   }, []);
+  function filterSnippets(searchText) {
+    let filteredList = snippetData.filter((item) => {
+      return item.title.toLowerCase().includes(searchText.toLowerCase());
+    });
+    setFilteredSnippets(filteredList);
+  }
 
   if (isLoading) {
     return <LoadingComponent />;
@@ -82,13 +90,18 @@ export default function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Navbar handleLogout={handleLogout} user={user} />
+      <Navbar
+        handleLogout={handleLogout}
+        user={user}
+        filterSnippets={filterSnippets}
+      />
       <Routes>
         {routes({
           onHandleAdd: handleAdd,
           user,
           authenticate,
           handleLogout,
+          filteredSnippets,
           snippetData,
           showForm,
           onSetSnippetData: setSnippetData,

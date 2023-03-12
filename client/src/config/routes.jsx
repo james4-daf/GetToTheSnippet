@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import { Navigate } from "react-router-dom";
 //import AddSnippet from "../components/AddSnippet/AddSnippet";
 import EditSnippet from "../components/EditSnippet";
+import LandingPage from "../components/LandingPage/LandingPage";
 import SnippetDetail from "../components/SnippetDetail/SnippetDetail";
 import SnippetList from "../components/SnippetList/SnippetList";
 import Login from "../pages/LogIn";
@@ -14,7 +15,7 @@ const routes = (props) => {
   return [
     {
       path: PATHS.HOMEPAGE,
-      element: <SnippetList {...props} />,
+      element: user ? <SnippetList {...props} /> : <LandingPage />,
     },
     {
       path: PATHS.SNIPPET_DETAIL,
