@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import * as CONSTS from "../../utils/consts";
-import * as PATHS from "../../utils/paths";
-import SearchBar from "../SearchBar";
-import "./Navbar.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import * as CONSTS from '../../utils/consts';
+import * as PATHS from '../../utils/paths';
+import SearchBar from '../SearchBar';
+import './Navbar.css';
 
 const Navbar = (props) => {
   const { filterSnippets } = props;

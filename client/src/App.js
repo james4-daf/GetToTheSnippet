@@ -1,13 +1,13 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import LoadingComponent from "./components/Loading";
-import Navbar from "./components/Navbar/Navbar";
-import routes from "./config/routes";
-import { getLoggedIn, logout } from "./services/auth";
-import * as USER_HELPERS from "./utils/userToken";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Route, Routes, redirect } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoadingComponent from './components/Loading';
+import Navbar from './components/Navbar/Navbar';
+import routes from './config/routes';
+import { getLoggedIn, logout } from './services/auth';
+import * as USER_HELPERS from './utils/userToken';
 
 export default function App() {
   const [snippetData, setSnippetData] = useState(null);
@@ -40,7 +40,7 @@ export default function App() {
     logout(accessToken).then((res) => {
       if (!res.status) {
         // deal with error here
-        console.error("Logout was unsuccessful: ", res);
+        console.error('Logout was unsuccessful: ', res);
       }
       USER_HELPERS.removeUserToken();
       setIsLoading(false);
@@ -53,7 +53,7 @@ export default function App() {
   }
   async function handleAdd(e) {
     e.preventDefault();
-    console.log("Submitted add");
+    console.log('Submitted add');
 
     const { title, code, tags } = e.target;
     let snippet = {
@@ -62,14 +62,14 @@ export default function App() {
       tags: tags.value,
     };
 
-    await axios.post("http://localhost:5005/api/create", snippet);
-    toast("Snippet added");
+    await axios.post('http://localhost:5005/api/create', snippet);
+    toast('Snippet added');
     setShowForm(false);
     getSnippetData();
   }
 
   async function getSnippetData() {
-    let response = await axios.get("http://localhost:5005/api/snippets");
+    let response = await axios.get('http://localhost:5005/api/snippets');
     setSnippetData(response.data);
     setFilteredSnippets(response.data);
   }

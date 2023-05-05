@@ -1,12 +1,13 @@
-import AddIcon from "@mui/icons-material/Add";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import React from "react";
-
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import React from 'react';
+import '../../App.css';
 function AddSnippet(props) {
   const { onHandleAdd, showForm, onSetShowForm } = props;
   return showForm ? (
-    <form onSubmit={onHandleAdd}>
+    <form onSubmit={onHandleAdd} className="AddForm">
       <TextField
         // onChange={(event) => {
         //   setTitle(event.target.value);
@@ -37,6 +38,14 @@ function AddSnippet(props) {
       <Button type="submit" variant="outlined" startIcon={<AddIcon />}>
         Add
       </Button>
+      <Button
+        type="submit"
+        variant="outlined"
+        startIcon={<CloseIcon />}
+        onClick={() => {
+          onSetShowForm(false);
+        }}
+      />
     </form>
   ) : (
     <Button
@@ -47,7 +56,7 @@ function AddSnippet(props) {
         onSetShowForm(true);
       }}
     >
-      showForm
+      Add Snippet
     </Button>
   );
 }

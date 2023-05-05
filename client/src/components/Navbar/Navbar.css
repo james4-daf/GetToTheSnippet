@@ -2,9 +2,10 @@ nav {
   display: flex;
   padding: 1em;
   justify-content: space-around;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   background: #282c34;
   font-weight: 600;
+  flex-shrink: 1;
 }
 
 .nav__projectName {

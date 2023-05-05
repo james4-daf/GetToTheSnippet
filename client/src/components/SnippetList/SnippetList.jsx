@@ -3,6 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import React from "react";
+import Highlighter from "react-highlight-words";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import AddSnippet from "../AddSnippet/AddSnippet";
 
@@ -49,7 +50,15 @@ function SnippetList(props) {
               >
                 <CardContent>
                   <Typography sx={{ fontSize: 25 }} gutterBottom>
-                    <Link to={`/snippets/${snippet._id}`}>{snippet.title}</Link>
+                    <Link to={`/snippets/${snippet._id}`}>
+                      {/* <Highlighter
+                        highlightClassName="YourHighlightClass"
+                        searchWords={snippet.title.split(" ")}
+                        autoEscape={true}
+                        textToHighlight={snippet.title}
+                      /> */}
+                      {snippet.title}
+                    </Link>
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {snippet.tags}
