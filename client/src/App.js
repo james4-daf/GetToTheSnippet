@@ -62,14 +62,19 @@ export default function App() {
       tags: tags.value,
     };
 
-    await axios.post('http://localhost:5005/api/create', snippet);
+    await axios.post(
+      'https://get-to-the-snippet.vercel.app/api/create',
+      snippet,
+    );
     toast('Snippet added');
     setShowForm(false);
     getSnippetData();
   }
 
   async function getSnippetData() {
-    let response = await axios.get('http://localhost:5005/api/snippets');
+    let response = await axios.get(
+      'https://get-to-the-snippet.vercel.app/api/snippets',
+    );
     setSnippetData(response.data);
     setFilteredSnippets(response.data);
   }

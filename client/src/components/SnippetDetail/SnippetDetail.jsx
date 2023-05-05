@@ -1,13 +1,13 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function SnippetDetail(props) {
   const { id } = useParams();
@@ -17,7 +17,7 @@ function SnippetDetail(props) {
   useEffect(() => {
     async function fetchSnippets() {
       let response = await axios.get(
-        `http://localhost:5005/api/snippets/${id}`
+        `https://get-to-the-snippet.vercel.app/api/snippets/${id}`,
       );
       // console.log(response.data);
       setShowSnippet(response.data);
@@ -29,7 +29,9 @@ function SnippetDetail(props) {
 
   async function deleteSnippet(e) {
     const { snippetData, onSetSnippetData } = props;
-    await axios.delete(`http://localhost:5005/api/snippets/${id}`);
+    await axios.delete(
+      `https://get-to-the-snippet.vercel.app/api/snippets/${id}`,
+    );
     let filteredSnippets = snippetData.filter((t) => t._id !== id);
     onSetSnippetData(filteredSnippets);
     navigate(`/`);

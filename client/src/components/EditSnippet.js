@@ -1,16 +1,16 @@
-import AddIcon from "@mui/icons-material/Add";
+import AddIcon from '@mui/icons-material/Add';
 //import DeleteIcon from "@mui/icons-material/Delete";
 //import EditIcon from "@mui/icons-material/Edit";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import axios from "axios";
-import { React, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import axios from 'axios';
+import { React, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import LoadingComponent from "../components/Loading/index";
+import LoadingComponent from '../components/Loading/index';
 
 function EditSnippet(props) {
   const { getSnippetData } = props;
@@ -20,7 +20,9 @@ function EditSnippet(props) {
   const [updating, setUpdating] = useState(false);
 
   async function fetchSnippets() {
-    let response = await axios.get(`http://localhost:5005/api/snippets/${id}`);
+    let response = await axios.get(
+      `https://get-to-the-snippet.vercel.app/api/snippets/${id}`,
+    );
     // console.log(response.data);
     setSnippetDetail(response.data);
   }
@@ -43,7 +45,10 @@ function EditSnippet(props) {
       tags: e.target.tags.value,
     };
     console.log(snippetObj);
-    await axios.patch(`http://localhost:5005/api/snippets/${id}`, snippetObj);
+    await axios.patch(
+      `https://get-to-the-snippet.vercel.app/api/snippets/${id}`,
+      snippetObj,
+    );
     setUpdating(false);
     getSnippetData();
     navigate(`/snippets/${id}`);
